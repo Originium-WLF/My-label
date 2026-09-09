@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Originium_WLF — разработчик</title>
+<meta name="description" content="Карточка разработчика Originium_WLF — проекты, стек, контакты." />
+<meta name="color-scheme" content="dark light" />
+
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Originium_WLF — разработчик" />
+<meta property="og:description" content="Карточка разработчика Originium_WLF — проекты, стек, контакты." />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>&#9670;</text></svg>" />
+</head>
+<body>
+
+<!-- ============ ПРЕЛОАДЕР ============ -->
+<div class="preloader" id="preloader">
+  <div class="preloader__inner">
+    <div class="preloader__crystal">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <polygon class="crystal-shape" points="50,4 92,30 92,70 50,96 8,70 8,30" />
+        <polygon class="crystal-shape crystal-shape--inner" points="50,22 76,37 76,63 50,78 24,63 24,37" />
+      </svg>
+    </div>
+    <div class="preloader__bar"><span id="preloaderFill"></span></div>
+    <div class="preloader__label"><span id="preloaderPct">0</span>%</div>
+  </div>
+</div>
+
+<!-- ============ КАСТОМНЫЙ КУРСОР ============ -->
+<div class="cursor" id="cursorDot" aria-hidden="true"></div>
+<div class="cursor-ring" id="cursorRing" aria-hidden="true">
+  <span class="cursor-ring__label" id="cursorLabel"></span>
+</div>
+
+<!-- ============ ФОН ============ -->
+<canvas class="bg-canvas" id="bgCanvas" aria-hidden="true"></canvas>
+<div class="bg-aurora" aria-hidden="true">
+  <span class="blob blob--1"></span>
+  <span class="blob blob--2"></span>
+  <span class="blob blob--3"></span>
+</div>
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-noise" aria-hidden="true"></div>
+
+<!-- ============ ПРОГРЕСС СКРОЛЛА ============ -->
+<div class="scroll-progress"><span id="scrollBar"></span></div>
+
+<!-- ============ ШАПКА ============ -->
+<header class="header" id="header">
+  <a class="brand" href="#top" data-cursor="link">
+    <span class="brand__mark" aria-hidden="true">
+      <svg viewBox="0 0 100 100"><polygon points="50,4 92,30 92,70 50,96 8,70 8,30" /></svg>
+    </span>
+    <span class="brand__text">Originium<span class="accent">_WLF</span></span>
+  </a>
+
+  <nav class="nav" aria-label="Основная навигация">
+    <a href="#about" data-cursor="link">Обо мне</a>
+    <a href="#projects" data-cursor="link">Проекты</a>
+    <a href="#stack" data-cursor="link">Стек</a>
+    <a href="#contact" data-cursor="link">Контакты</a>
+  </nav>
+
+  <button class="theme-toggle" id="themeToggle" type="button"
+          aria-label="Переключить тему" title="Переключить тему (T)" data-cursor="button">
+    <span class="theme-toggle__track">
+      <span class="theme-toggle__thumb">
+        <svg class="icon icon--moon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/>
+        </svg>
+        <svg class="icon icon--sun" viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="4.2"/>
+          <g class="rays"><path d="M12 1.6v3M12 19.4v3M1.6 12h3M19.4 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M19.4 4.6l-2.1 2.1M6.7 17.3l-2.1 2.1"/></g>
+        </svg>
+      </span>
+    </span>
+  </button>
+
+  <button class="burger" id="burger" type="button" aria-label="Меню" aria-expanded="false" data-cursor="button">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<main id="top">
+
+  <!-- ============ ГЕРОЙ ============ -->
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow reveal">
+        <span class="status-dot" aria-hidden="true"></span>
+        Доступен для проектов
+      </p>
+
+      <h1 class="hero__title">
+        <span class="line"><span class="word" data-splittable>Originium</span></span>
+        <span class="line"><span class="word word--whole accent glitch" data-text="_WLF">_WLF</span></span>
+      </h1>
+
+      <p class="hero__role reveal">
+        <span class="prompt">&gt;</span>
+        <span id="typewriter" class="typewriter"></span><span class="caret" aria-hidden="true"></span>
+      </p>
+
+      <p class="hero__desc reveal">
+        Пишу код, который приятно читать, и интерфейсы, которые приятно трогать.
+        Здесь собраны мои проекты — от небольших утилит до полноценных продуктов.
+      </p>
+
+      <div class="hero__actions reveal">
+        <a href="#projects" class="btn btn--primary" data-cursor="button">
+          <span>Смотреть проекты</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <a href="#contact" class="btn btn--ghost" data-cursor="button">
+          <span>Связаться</span>
+        </a>
+      </div>
+
+      <ul class="stats reveal" id="stats">
+        <li><b class="counter" data-to="24">0</b><span>проектов</span></li>
+        <li><b class="counter" data-to="5">0</b><span>лет опыта</span></li>
+        <li><b class="counter" data-to="18">0</b><span>технологий</span></li>
+        <li><b class="counter" data-to="100" data-suffix="%">0</b><span>вовлечённости</span></li>
+      </ul>
+    </div>
+
+    <a class="scroll-hint" href="#about" aria-label="Вниз" data-cursor="link">
+      <span class="scroll-hint__mouse"><i></i></span>
+      <span class="scroll-hint__text">Листай вниз</span>
+    </a>
+  </section>
+
+  <!-- ============ ОБО МНЕ ============ -->
+  <section class="section" id="about">
+    <div class="section__head reveal">
+      <span class="section__index">01</span>
+      <h2 class="section__title">Обо мне</h2>
+      <span class="section__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="about">
+      <article class="card card--profile tilt reveal" data-cursor="card">
+        <div class="card__glow" aria-hidden="true"></div>
+        <div class="profile">
+          <div class="profile__avatar" aria-hidden="true">
+            <svg viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="avaGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="var(--accent)"/>
+                  <stop offset="100%" stop-color="var(--accent-2)"/>
+                </linearGradient>
+              </defs>
+              <polygon points="50,4 92,30 92,70 50,96 8,70 8,30" fill="url(#avaGrad)" opacity=".18"/>
+              <polygon points="50,4 92,30 92,70 50,96 8,70 8,30" fill="none" stroke="url(#avaGrad)" stroke-width="2"/>
+              <text x="50" y="50" text-anchor="middle" dominant-baseline="central"
+                    font-family="Space Grotesk, sans-serif" font-size="30" font-weight="700"
+                    fill="url(#avaGrad)">OW</text>
+            </svg>
+          </div>
+          <div class="profile__meta">
+            <h3>Originium_WLF</h3>
+            <p class="profile__tag">Full-stack разработчик · инди-мейкер</p>
+            <ul class="profile__facts">
+              <li><span>Локация</span><b>Онлайн / удалённо</b></li>
+              <li><span>Фокус</span><b>Web · Backend · Tooling</b></li>
+              <li><span>Статус</span><b class="ok">Открыт к работе</b></li>
+            </ul>
+          </div>
+        </div>
+      </article>
+
+      <div class="about__text reveal">
+        <p>
+          Привет. Я <b>Originium_WLF</b> — разработчик, который любит доводить детали до конца.
+          Мне одинаково интересны и архитектура backend-сервисов, и микровзаимодействия
+          в интерфейсе, из-за которых продукт хочется открыть ещё раз.
+        </p>
+        <p>
+          Работаю с идеей от прототипа до продакшена: проектирую, пишу, тестирую и поддерживаю.
+          Отдельная слабость — инструменты для разработчиков и всё, что автоматизирует рутину.
+        </p>
+        <ul class="about__list">
+          <li><span aria-hidden="true">◆</span> Чистая архитектура и читаемый код</li>
+          <li><span aria-hidden="true">◆</span> Внимание к производительности и деталям</li>
+          <li><span aria-hidden="true">◆</span> Документация, которую реально читают</li>
+          <li><span aria-hidden="true">◆</span> Открытый исходный код</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ПРОЕКТЫ ============ -->
+  <section class="section" id="projects">
+    <div class="section__head reveal">
+      <span class="section__index">02</span>
+      <h2 class="section__title">Проекты</h2>
+      <span class="section__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="filters reveal" id="filters" role="tablist" aria-label="Фильтр проектов"></div>
+
+    <div class="projects" id="projectsGrid"></div>
+
+    <p class="projects__empty" id="projectsEmpty" hidden>Здесь пока пусто — но скоро появится.</p>
+  </section>
+
+  <!-- ============ СТЕК ============ -->
+  <section class="section" id="stack">
+    <div class="section__head reveal">
+      <span class="section__index">03</span>
+      <h2 class="section__title">Стек</h2>
+      <span class="section__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="stack" id="stackGrid"></div>
+
+    <div class="marquee reveal" aria-hidden="true">
+      <div class="marquee__track" id="marqueeTrack"></div>
+    </div>
+  </section>
+
+  <!-- ============ КОНТАКТЫ ============ -->
+  <section class="section section--contact" id="contact">
+    <div class="section__head reveal">
+      <span class="section__index">04</span>
+      <h2 class="section__title">Контакты</h2>
+      <span class="section__rule" aria-hidden="true"></span>
+    </div>
+
+    <div class="contact reveal">
+      <h3 class="contact__title">Есть идея? <span class="accent">Давай сделаем.</span></h3>
+      <p class="contact__desc">Открыт для коллабораций, фриланса и интересных pet-проектов.</p>
+      <div class="contact__links" id="contactLinks"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <span>© <span id="year"></span> Originium_WLF</span>
+  <span class="footer__mid">Сделано с вниманием к деталям</span>
+  <button class="to-top" id="toTop" type="button" data-cursor="button" aria-label="Наверх">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+    <span>Наверх</span>
+  </button>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
